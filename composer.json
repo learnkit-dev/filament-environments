@@ -1,0 +1,29 @@
+{
+    "name": "learnkit/filament-environment",
+    "description": "Environment plugin for Filament",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Sebastiaan Kloos",
+            "email": "sebastiaan@learnkit.dev"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LearnKit\\FilamentEnvironment\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^3.2",
+        "illuminate/support": "^v10.0.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LearnKit\\FilamentEnvironment\\FilamentEnvironmentServiceProvider"
+            ]
+        }
+    }
+}
