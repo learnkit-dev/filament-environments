@@ -18,7 +18,9 @@ class FilamentEnvironmentServiceProvider extends ServiceProvider
     public function boot()
     {
         Filament::serving(function () {
-            Filament::registerRenderHook(PanelsRenderHook::BODY_START, fn() => view('filament-environment::bar'));
+            if (FilamentEnvironment::allows()) {
+                Filament::registerRenderHook(PanelsRenderHook::BODY_START, fn() => view('filament-environment::bar'));
+            }
         });
     }
 }
