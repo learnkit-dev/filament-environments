@@ -12,4 +12,10 @@ return [
     'production' => [
         'prod', 'production',
     ],
+
+    /*
+     * How to display the environment indicator.
+     * Supported values: 'bar', 'badge', 'both'.
+     */
+    'display' => env('FILAMENT_ENVIRONMENT_DISPLAY', 'bar'),
 ];

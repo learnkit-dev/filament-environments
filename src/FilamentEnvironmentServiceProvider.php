@@ -18,8 +18,18 @@ class FilamentEnvironmentServiceProvider extends ServiceProvider
     public function boot()
     {
         Filament::serving(function () {
-            if (FilamentEnvironment::allows()) {
+            if (! FilamentEnvironment::allows()) {
+                return;
+            }
+
+            $display = config('filament-environment.display', 'bar');
+
+            if (in_array($display, ['bar', 'both'], true)) {
                 Filament::registerRenderHook(PanelsRenderHook::BODY_START, fn() => view('filament-environment::bar'));
+            }
+
+            if (in_array($display, ['badge', 'both'], true)) {
+                Filament::registerRenderHook(PanelsRenderHook::GLOBAL_SEARCH_BEFORE, fn() => view('filament-environment::badge'));
             }
         });
     }

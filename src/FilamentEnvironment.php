@@ -21,4 +21,13 @@ class FilamentEnvironment
 
         return $method() ?? false;
     }
+
+    public static function color(?string $environment = null): string
+    {
+        $environment ??= \Illuminate\Support\Facades\App::environment();
+
+        $mapping = config('filament-environment.mapping', []);
+
+        return $mapping[$environment] ?? \Illuminate\Support\Arr::first($mapping) ?? '#000000';
+    }
 }
