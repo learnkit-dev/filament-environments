@@ -17,6 +17,12 @@ class FilamentEnvironmentServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/filament-environment.php' => config_path('filament-environment.php'),
+            ], 'filament-environment-config');
+        }
+
         Filament::serving(function () {
             if (! FilamentEnvironment::allows()) {
                 return;
